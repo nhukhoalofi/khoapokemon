@@ -1,69 +1,64 @@
 body {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    overflow-y: auto; /* Enable full page scrolling */
 }
 
 .container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    height: 100vh;
-    overflow-y: auto; /* Cho phép cuộn dọc */
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 #app {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 10px; /* Khoảng cách giữa các item */
-} 
-#app {
-    position: relative;
-    top:200px;
+    justify-content: center;
+    width: 1400px;
+    gap: 10px;
 }
-h1 {
-    position: relative;
-    top: 200px;
+.type {
+    display:flex;   
+    justify-self: center;
+    padding: 2px 2px;
+    gap:2px;
+    border-radius: 5px;
+    color: black;
 }
-
 input {
-    position: relative;
-    top: 200px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 330px;
     height: 40px;
-    border: 1px solid #ddd;
+    border: 1px solid #c2c2c2;
     padding: 5px 10px;
     outline: none;
 }
 .pokemon-item {
-    position: relative;
-    top: 100px;
-    height: 200px;
-    width: 194px;
+    box-shadow: 2px 2px 2px 2px #f2f2f2;
+    width: 180px;
+    height:279px;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: white;
     display: inline-block;
     text-align: center;
     transition: transform 0.3s ease;
 }
-
 .pokemon-id {
     font-size: 14px;
     color: #777;
 }
 
 .pokemon-item img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 180px;
     object-fit: contain;
     margin-bottom: 10px;
 }
@@ -72,31 +67,17 @@ input {
     font-size: 16px;
     margin: 0;
 }
-
-.pokemon-item:hover {
-    transform: scale(1.1);
-}
-.dl {
-    display: flex;
-}
 button {
-    position: relative;
-    bottom: -290px;
-    margin-
     color: #ffffff;
     background-color: #ff4d4f;
-    border:none;
+    border: none;
     border-radius: 3px;
     height: 60px;
     width:124px;
 }
-.type {
-    display:flex;
-    justify-self: center;
-    padding: 2px 2px;
-    gap:2px;
-    border-radius: 5px;
-    color: black;
+.pokemon-item:hover {
+    box-shadow: 2px 2px 2px 2px 
+    #dfdfdf
 }
 .type.fire {
     background-color: #ec421f;
@@ -151,4 +132,28 @@ button {
 }
 .type.dark {
     background-color: #645244;
+}
+@media screen and (max-width: 1600px) {
+    .pokemon-item {
+        width:150px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    #app {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 960px) {
+    #app {
+        width: 700px;
+    }
+}
+@media screen and (max-width: 767px) {
+    #app {
+        width: 100%;
+    }
+    input {
+        width: 100%;
+        height: 40px;
+    }
 }
