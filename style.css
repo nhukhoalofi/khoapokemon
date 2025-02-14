@@ -3,7 +3,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* Enable full page scrolling */
+    overflow-y: auto; 
 }
 
 .container {
@@ -71,13 +71,17 @@ button {
     color: #ffffff;
     background-color: #ff4d4f;
     border: none;
-    border-radius: 3px;
+    border-radius: 15px;
     height: 60px;
     width:124px;
 }
+button:hover {
+    cursor: pointer;
+}
 .pokemon-item:hover {
     box-shadow: 2px 2px 2px 2px 
-    #dfdfdf
+    #dfdfdf;
+    cursor: pointer;
 }
 .type.fire {
     background-color: #ec421f;

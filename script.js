@@ -1,7 +1,6 @@
 const app = document.querySelector('#app');
 const button = document.querySelector('button');
 const input = document.querySelector('input');
-
 function fetchPromise(URL) {
     return fetch(URL)
         .then(response => response.json())
@@ -17,7 +16,7 @@ function createPokemonType(types) {
     }).join('');
 }
 let offset = 0;
-const limit = 20;
+const limit = 36;
 let pokemons = JSON.parse(localStorage.getItem('pokemonsData')) || [];
 let filteredPokemon = pokemons;
 if (pokemons.length) {
@@ -38,29 +37,23 @@ if (pokemons.length) {
 function upcasefirst(s){
     return s.charAt(0).toUpperCase() + s.slice(1);
 }
-// Hàm render hiển thị danh sách Pokémon
 async function render() {
     const renderLimit = offset + limit;
     for (; offset < renderLimit; offset++) {
         const pokemon = filteredPokemon[offset];
         if (!pokemon) {
-            button.style.display = 'none'; // Ẩn nút nếu hết Pokémon
+            button.style.display = 'none'; 
             break;
         } else {
-            button.style.display = 'block'; // Hiển thị nút nếu còn Pokémon
+            button.style.display = 'block';
         }
 
         try {
-            const details = await fetchPromise(pokemon.url); // Đợi dữ liệu từ API
-            if (!details) continue; // Nếu lỗi, bỏ qua Pokémon này
-
+            const details = await fetchPromise(pokemon.url); 
+            if (!details) continue; 
             const typesHTML = createPokemonType(details.types);
-
-            // Sử dụng ID thực tế từ dữ liệu chi tiết
-            const pokemonID = details.id; // Lấy ID từ API chi tiết
+            const pokemonID = details.id; 
             const pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonID}.png`;
-
-            // Tạo HTML cho mỗi Pokémon
             const div = document.createElement('div');
             div.classList.add('pokemon-item');
             div.innerHTML = `
@@ -76,9 +69,6 @@ async function render() {
         }
     }
 }
-function indam(s){
-    return 
-}
 button.addEventListener('click', render);
 function boldText(text) {
     return `<b>${text}</b>`;
@@ -93,9 +83,8 @@ input.addEventListener("focus", function() {
     input.style.border = "1px solid #000000"; // Đặt màu viền khi focus vào ô input
 });
 
-// Khi người dùng thoát khỏi ô input (blur)
 input.addEventListener("blur", function() {
-    input.style.border = ""; // Đặt lại màu viền mặc định khi mất focus
+    input.style.border = ""; 
 });
 
 input.addEventListener('input', function () {
@@ -107,7 +96,7 @@ input.addEventListener('input', function () {
 
     if (!filteredPokemon.length) {
         const escapedInput = escapeHTML(input.value);
-        const bordersearch = boldText(escapedInput); // Xử lý chuỗi đặc biệt
+        const bordersearch = boldText(escapedInput); 
         app.innerHTML = `<p>No Pokémon matched with "${bordersearch}".</p>`;
         button.style.display = 'none';
     } else {
@@ -115,3 +104,11 @@ input.addEventListener('input', function () {
         render();
     }
 });
+
+
+
+
+
+
+
+
